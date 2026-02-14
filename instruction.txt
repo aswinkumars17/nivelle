@@ -1,0 +1,145 @@
+You are working on a professional frontend project named "NIVELLE".
+
+Before making ANY changes, follow these strict workflow rules.
+
+-----------------------------------------
+MANDATORY PROJECT GOVERNANCE RULES
+-----------------------------------------
+
+1. Documentation First Policy
+- Before writing or modifying any code,
+  you MUST read the following files:
+  - README.md
+  - PROJECT_RULES.md
+  - ARCHITECTURE.md
+  - DESIGN_SYSTEM.md
+  - CHANGELOG.md
+
+- If these files do not exist, create them first before writing any feature code.
+
+-----------------------------------------
+2. Change Logging Policy
+-----------------------------------------
+
+Every modification must be recorded in:
+
+CHANGELOG.md
+
+Each entry must include:
+- Date
+- File(s) modified
+- Type of change (Feature / Refactor / Fix / UI Update / Performance / Cleanup)
+- Short description of what was changed
+- Reason for change
+
+Format example:
+
+## [2026-02-13]
+### Feature
+- Added ProductCard hover animation
+Reason: Improve UI interaction and premium feel.
+
+-----------------------------------------
+3. Feature Development Workflow
+-----------------------------------------
+
+When creating a new feature:
+
+Step 1: Update ARCHITECTURE.md (if structure changes)
+Step 2: Update DESIGN_SYSTEM.md (if UI rules change)
+Step 3: Implement code
+Step 4: Update CHANGELOG.md
+
+Never skip documentation updates.
+
+-----------------------------------------
+4. File Modification Rules
+-----------------------------------------
+
+- Do NOT randomly edit files.
+- Modify only relevant components.
+- Reuse existing components before creating new ones.
+- Avoid duplicate logic.
+- Maintain folder structure integrity.
+
+-----------------------------------------
+5. Code Quality Standards
+-----------------------------------------
+
+- No inline styles.
+- Use reusable components.
+- Maintain consistent naming conventions.
+- Keep components small and modular.
+- Avoid unnecessary dependencies.
+
+-----------------------------------------
+6. Logging & Debugging Policy
+-----------------------------------------
+
+- Maintain a DEV_LOG.md file.
+- Log major debugging steps.
+- Log performance issues.
+- Log architectural decisions.
+
+Format example:
+
+## Debug Session – Cart Drawer Issue
+Problem: Drawer animation stuttered.
+Cause: Unnecessary re-renders.
+Solution: Memoized component.
+
+-----------------------------------------
+7. Versioning Rule
+-----------------------------------------
+
+Every significant feature update must:
+- Increment version in README.md
+- Follow semantic versioning (v1.0.0 → v1.1.0 → v1.1.1)
+
+-----------------------------------------
+8. No Silent Changes Policy
+-----------------------------------------
+
+All changes must be documented.
+No hidden refactors.
+No undocumented UI modifications.
+
+-----------------------------------------
+9. Documentation Files to Maintain
+-----------------------------------------
+
+Ensure these files exist:
+
+- README.md
+- PROJECT_RULES.md
+- ARCHITECTURE.md
+- DESIGN_SYSTEM.md
+- CHANGELOG.md
+- DEV_LOG.md
+
+If missing, create them with professional structure.
+
+-----------------------------------------
+10. Pre-Commit Checklist (Simulated)
+-----------------------------------------
+
+Before finishing any task, verify:
+
+[ ] Documentation updated  
+[ ] CHANGELOG entry added  
+[ ] No unused imports  
+[ ] No console.logs  
+[ ] No duplicated components  
+[ ] Follows design system  
+[ ] Folder structure maintained  
+
+-----------------------------------------
+IMPORTANT
+-----------------------------------------
+
+You are working in a team environment.
+Think long-term scalability.
+Preserve maintainability.
+Do not prioritize speed over structure.
+
+Always maintain clean workflow discipline.
