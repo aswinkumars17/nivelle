@@ -10,6 +10,8 @@ import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import Wishlist from '../pages/Wishlist';
 import Orders from '../pages/Orders';
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
 
 const AppRoutes = () => {
   return (
@@ -25,6 +27,8 @@ const AppRoutes = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </AnimatePresence>
   );

@@ -28,12 +28,12 @@ const About = () => {
   return (
     <div className="min-h-screen bg-soft-ivory dark:bg-[#0a0a0a]">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-deep-charcoal via-[#1a1a1a] to-black">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,167,94,0.1),transparent_70%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
         </div>
-        <div className="relative z-10 text-center px-4">
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -48,7 +48,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-soft-ivory mb-6 drop-shadow-2xl"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-soft-ivory mb-4 sm:mb-6 drop-shadow-2xl"
           >
             Our Story
           </motion.h1>
@@ -67,7 +67,7 @@ const About = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 px-4 dark:bg-[#0a0a0a]">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 dark:bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-warm-beige/30 dark:bg-[#111111]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-warm-beige/30 dark:bg-[#111111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -108,7 +108,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -116,15 +116,15 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center group"
+                className="text-center group p-4 sm:p-0"
               >
-                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-deep-charcoal dark:bg-subtle-gold/20 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(198,167,94,0.3)]">
-                  <value.icon className="w-8 h-8 text-soft-ivory dark:text-subtle-gold" />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 flex items-center justify-center bg-deep-charcoal dark:bg-subtle-gold/20 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(198,167,94,0.3)]">
+                  <value.icon className="w-6 h-6 sm:w-8 sm:h-8 text-soft-ivory dark:text-subtle-gold" />
                 </div>
-                <h3 className="text-xl font-semibold text-deep-charcoal dark:text-soft-ivory mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-deep-charcoal dark:text-soft-ivory mb-2 sm:mb-3">
                   {value.title}
                 </h3>
-                <p className="text-muted-walnut dark:text-soft-ivory/70">
+                <p className="text-sm sm:text-base text-muted-walnut dark:text-soft-ivory/70 leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -134,7 +134,7 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-20 px-4 dark:bg-[#0a0a0a]">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 dark:bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -143,24 +143,24 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="prose prose-lg max-w-none dark:prose-invert"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-8 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-6 sm:mb-8 text-center">
               The NIVELLE Journey
             </h2>
-            <div className="w-20 h-1 bg-subtle-gold mx-auto mb-12 rounded-full" />
-            <div className="space-y-6 text-muted-walnut dark:text-soft-ivory/70 leading-relaxed">
-              <p className="text-lg">
+            <div className="w-16 sm:w-20 h-1 bg-subtle-gold mx-auto mb-8 sm:mb-12 rounded-full" />
+            <div className="space-y-4 sm:space-y-6 text-muted-walnut dark:text-soft-ivory/70 leading-relaxed">
+              <p className="text-base sm:text-lg">
                 Founded in 2018, NIVELLE began with a simple vision: to create furniture 
                 that seamlessly blends modern aesthetics with timeless craftsmanship. 
                 What started as a small workshop has grown into a beloved brand known 
                 for quality and design excellence.
               </p>
-              <p className="text-lg">
+              <p className="text-base sm:text-lg">
                 Our team of skilled artisans and designers work collaboratively to bring 
                 each piece to life, ensuring that every item that bears the NIVELLE name 
                 meets our exacting standards. From the initial sketch to the final stitch, 
                 we obsess over every detail.
               </p>
-              <p className="text-lg">
+              <p className="text-base sm:text-lg">
                 Today, NIVELLE continues to push boundaries in furniture design while 
                 staying true to our core values of quality, sustainability, and customer 
                 satisfaction. We invite you to experience the NIVELLE difference and 

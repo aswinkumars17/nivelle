@@ -44,7 +44,7 @@ const Collections = () => {
   return (
     <div className="min-h-screen bg-soft-ivory dark:bg-[#0a0a0a]">
       {/* Hero Section */}
-      <section className="py-20 px-4 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(198,167,94,0.08),transparent_50%)]" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
@@ -60,7 +60,7 @@ const Collections = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal dark:text-soft-ivory mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal dark:text-soft-ivory mb-4 sm:mb-6"
           >
             Our Collections
           </motion.h1>
@@ -77,9 +77,9 @@ const Collections = () => {
       </section>
 
       {/* Collections Grid */}
-      <section className="pb-20 px-4">
+      <section className="pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {collections.map((collection, index) => (
               <motion.div
                 key={collection.name}
@@ -87,9 +87,9 @@ const Collections = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl bg-warm-beige/30 dark:bg-[#111111] border border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/30 transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-warm-beige/30 dark:bg-[#111111] border border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/30 transition-all duration-300"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[16/10] sm:aspect-[4/3] overflow-hidden">
                   <img
                     src={collection.image}
                     alt={collection.name}
@@ -97,16 +97,16 @@ const Collections = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="px-3 py-1 bg-subtle-gold/20 border border-subtle-gold/30 text-subtle-gold text-xs font-medium rounded-full">
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                  <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                    <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-subtle-gold/20 border border-subtle-gold/30 text-subtle-gold text-[10px] sm:text-xs font-medium rounded-full">
                       Coming Soon
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-soft-ivory mb-2 drop-shadow-lg">
+                  <h3 className="text-xl sm:text-2xl font-bold text-soft-ivory mb-1 sm:mb-2 drop-shadow-lg">
                     {collection.name}
                   </h3>
-                  <p className="text-soft-ivory/70 text-sm">
+                  <p className="text-soft-ivory/70 text-xs sm:text-sm line-clamp-2">
                     {collection.description}
                   </p>
                 </div>
@@ -122,7 +122,7 @@ const Collections = () => {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-20 px-4 bg-warm-beige/30 dark:bg-[#111111] relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-warm-beige/30 dark:bg-[#111111] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,167,94,0.05),transparent_70%)]" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
@@ -131,21 +131,21 @@ const Collections = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-3 sm:mb-4">
               Be the First to Know
             </h2>
-            <div className="w-20 h-1 bg-subtle-gold mx-auto mb-6 rounded-full" />
-            <p className="text-muted-walnut dark:text-soft-ivory/70 mb-8 max-w-xl mx-auto">
+            <div className="w-16 sm:w-20 h-1 bg-subtle-gold mx-auto mb-4 sm:mb-6 rounded-full" />
+            <p className="text-muted-walnut dark:text-soft-ivory/70 mb-6 sm:mb-8 max-w-xl mx-auto text-sm sm:text-base px-2 sm:px-0">
               Subscribe to our newsletter and be notified when our collections launch. 
               Get exclusive early access and special offers.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-3 bg-white dark:bg-[#1a1a1a] border border-muted-walnut/30 dark:border-subtle-gold/20 rounded-full focus:outline-none focus:ring-2 focus:ring-subtle-gold dark:focus:ring-subtle-gold/50 text-deep-charcoal dark:text-soft-ivory placeholder-muted-walnut dark:placeholder-soft-ivory/30 transition-all duration-300"
+                className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 bg-white dark:bg-[#1a1a1a] border border-muted-walnut/30 dark:border-subtle-gold/20 rounded-full focus:outline-none focus:ring-2 focus:ring-subtle-gold dark:focus:ring-subtle-gold/50 text-deep-charcoal dark:text-soft-ivory placeholder-muted-walnut dark:placeholder-soft-ivory/30 transition-all duration-300 text-sm sm:text-base"
               />
-              <button className="px-8 py-3 bg-deep-charcoal dark:bg-subtle-gold text-soft-ivory dark:text-deep-charcoal font-medium rounded-full hover:bg-muted-walnut dark:hover:bg-subtle-gold/90 transition-all duration-300 hover:shadow-[0_0_20px_rgba(198,167,94,0.3)]">
+              <button className="px-6 sm:px-8 py-2.5 sm:py-3 bg-deep-charcoal dark:bg-subtle-gold text-soft-ivory dark:text-deep-charcoal font-medium rounded-full hover:bg-muted-walnut dark:hover:bg-subtle-gold/90 transition-all duration-300 hover:shadow-[0_0_20px_rgba(198,167,94,0.3)] text-sm sm:text-base">
                 Notify Me
               </button>
             </div>

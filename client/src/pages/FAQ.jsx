@@ -55,7 +55,7 @@ const FAQ = () => {
   return (
     <div className="min-h-screen bg-soft-ivory dark:bg-[#0a0a0a]">
       {/* Hero Section */}
-      <section className="py-20 px-4 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(198,167,94,0.08),transparent_50%)]" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
@@ -72,7 +72,7 @@ const FAQ = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal dark:text-soft-ivory mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal dark:text-soft-ivory mb-4 sm:mb-6"
           >
             Frequently Asked Questions
           </motion.h1>
@@ -88,9 +88,9 @@ const FAQ = () => {
       </section>
 
       {/* FAQ Accordion */}
-      <section className="pb-20 px-4">
+      <section className="pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
@@ -98,7 +98,7 @@ const FAQ = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className={`bg-warm-beige/30 dark:bg-[#111111] rounded-2xl overflow-hidden border transition-all duration-300 ${
+                className={`bg-warm-beige/30 dark:bg-[#111111] rounded-xl sm:rounded-2xl overflow-hidden border transition-all duration-300 ${
                   openIndex === index 
                     ? 'border-subtle-gold/30 shadow-[0_0_20px_rgba(198,167,94,0.1)]' 
                     : 'border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/20'
@@ -106,9 +106,9 @@ const FAQ = () => {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between p-6 text-left group"
+                  className="w-full flex items-center justify-between p-4 sm:p-6 text-left group"
                 >
-                  <span className="text-lg font-semibold text-deep-charcoal dark:text-soft-ivory pr-4 group-hover:text-subtle-gold transition-colors">
+                  <span className="text-base sm:text-lg font-semibold text-deep-charcoal dark:text-soft-ivory pr-3 sm:pr-4 group-hover:text-subtle-gold transition-colors leading-tight">
                     {faq.question}
                   </span>
                   <motion.div
@@ -119,9 +119,9 @@ const FAQ = () => {
                     }`}
                   >
                     {openIndex === index ? (
-                      <ChevronUp className="w-5 h-5 text-subtle-gold" />
+                      <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-subtle-gold" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-muted-walnut dark:text-soft-ivory/50" />
+                      <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-muted-walnut dark:text-soft-ivory/50" />
                     )}
                   </motion.div>
                 </button>
@@ -134,9 +134,9 @@ const FAQ = () => {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-6">
-                    <div className="h-px bg-gradient-to-r from-subtle-gold/20 to-transparent mb-4" />
-                    <p className="text-muted-walnut dark:text-soft-ivory/70 leading-relaxed">
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                    <div className="h-px bg-gradient-to-r from-subtle-gold/20 to-transparent mb-3 sm:mb-4" />
+                    <p className="text-sm sm:text-base text-muted-walnut dark:text-soft-ivory/70 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -148,7 +148,7 @@ const FAQ = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 px-4 bg-warm-beige/30 dark:bg-[#111111] relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-warm-beige/30 dark:bg-[#111111] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,167,94,0.05),transparent_70%)]" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
@@ -157,16 +157,16 @@ const FAQ = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-3 sm:mb-4">
               Still Have Questions?
             </h2>
-            <div className="w-20 h-1 bg-subtle-gold mx-auto mb-6 rounded-full" />
-            <p className="text-muted-walnut dark:text-soft-ivory/70 mb-8 max-w-xl mx-auto">
+            <div className="w-16 sm:w-20 h-1 bg-subtle-gold mx-auto mb-4 sm:mb-6 rounded-full" />
+            <p className="text-muted-walnut dark:text-soft-ivory/70 mb-6 sm:mb-8 max-w-xl mx-auto text-sm sm:text-base px-2 sm:px-0">
               Our team is here to help. Reach out and we will get back to you as soon as possible.
             </p>
             <a
               href="/contact"
-              className="inline-block px-8 py-3 bg-deep-charcoal dark:bg-subtle-gold text-soft-ivory dark:text-deep-charcoal font-medium rounded-full hover:bg-muted-walnut dark:hover:bg-subtle-gold/90 transition-all duration-300 hover:shadow-[0_0_20px_rgba(198,167,94,0.3)]"
+              className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-deep-charcoal dark:bg-subtle-gold text-soft-ivory dark:text-deep-charcoal font-medium rounded-full hover:bg-muted-walnut dark:hover:bg-subtle-gold/90 transition-all duration-300 hover:shadow-[0_0_20px_rgba(198,167,94,0.3)] text-sm sm:text-base"
             >
               Contact Us
             </a>

@@ -56,7 +56,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-soft-ivory dark:bg-[#0a0a0a]">
       {/* Hero Section */}
-      <section className="py-20 px-4 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(198,167,94,0.08),transparent_50%)]" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
@@ -73,7 +73,7 @@ const Blog = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal dark:text-soft-ivory mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal dark:text-soft-ivory mb-4 sm:mb-6"
           >
             Design Journal
           </motion.h1>
@@ -89,44 +89,44 @@ const Blog = () => {
       </section>
 
       {/* Featured Post */}
-      <section className="pb-20 px-4">
+      <section className="pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-3xl bg-warm-beige/30 dark:bg-[#111111] border border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/20 transition-all duration-300"
+            className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-warm-beige/30 dark:bg-[#111111] border border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/20 transition-all duration-300"
           >
             <div className="grid lg:grid-cols-2">
-              <div className="aspect-[4/3] lg:aspect-auto overflow-hidden">
+              <div className="aspect-[16/9] lg:aspect-auto overflow-hidden">
                 <img
                   src={blogPosts[0].image}
                   alt={blogPosts[0].title}
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <span className="inline-block px-3 py-1 bg-subtle-gold/10 border border-subtle-gold/30 text-subtle-gold text-sm font-medium rounded-full w-fit mb-4">
+              <div className="p-5 sm:p-8 lg:p-12 flex flex-col justify-center">
+                <span className="inline-block px-2.5 sm:px-3 py-0.5 sm:py-1 bg-subtle-gold/10 border border-subtle-gold/30 text-subtle-gold text-xs sm:text-sm font-medium rounded-full w-fit mb-3 sm:mb-4">
                   {blogPosts[0].category}
                 </span>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-3 sm:mb-4">
                   {blogPosts[0].title}
                 </h2>
-                <p className="text-muted-walnut dark:text-soft-ivory/70 mb-6">
+                <p className="text-muted-walnut dark:text-soft-ivory/70 mb-4 sm:mb-6 text-sm sm:text-base line-clamp-2 sm:line-clamp-none">
                   {blogPosts[0].excerpt}
                 </p>
-                <div className="flex items-center gap-4 text-sm text-muted-walnut dark:text-soft-ivory/50 mb-6">
+                <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-walnut dark:text-soft-ivory/50 mb-4 sm:mb-6">
                   <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
+                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     {blogPosts[0].date}
                   </span>
                   <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
+                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     {blogPosts[0].readTime}
                   </span>
                 </div>
-                <button className="inline-flex items-center gap-2 text-subtle-gold font-medium hover:gap-3 transition-all group">
+                <button className="inline-flex items-center gap-2 text-subtle-gold font-medium hover:gap-3 transition-all group text-sm sm:text-base">
                   Read Article <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -136,9 +136,9 @@ const Blog = () => {
       </section>
 
       {/* Blog Grid */}
-      <section className="pb-20 px-4">
+      <section className="pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {blogPosts.slice(1).map((post, index) => (
               <motion.article
                 key={post.title}
@@ -146,26 +146,26 @@ const Blog = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-warm-beige/30 dark:bg-[#111111] rounded-2xl overflow-hidden border border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/30 transition-all duration-300"
+                className="group bg-warm-beige/30 dark:bg-[#111111] rounded-xl sm:rounded-2xl overflow-hidden border border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/30 transition-all duration-300"
               >
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="aspect-[16/9] sm:aspect-[16/10] overflow-hidden">
                   <img
                     src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-                <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-subtle-gold/10 border border-subtle-gold/30 text-subtle-gold text-xs font-medium rounded-full mb-3">
+                <div className="p-4 sm:p-6">
+                  <span className="inline-block px-2.5 sm:px-3 py-0.5 sm:py-1 bg-subtle-gold/10 border border-subtle-gold/30 text-subtle-gold text-[10px] sm:text-xs font-medium rounded-full mb-2 sm:mb-3">
                     {post.category}
                   </span>
-                  <h3 className="text-xl font-bold text-deep-charcoal dark:text-soft-ivory mb-2 group-hover:text-subtle-gold transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-deep-charcoal dark:text-soft-ivory mb-2 group-hover:text-subtle-gold transition-colors line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-muted-walnut dark:text-soft-ivory/70 text-sm mb-4">
+                  <p className="text-muted-walnut dark:text-soft-ivory/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center gap-4 text-xs text-muted-walnut dark:text-soft-ivory/50">
+                  <div className="flex items-center gap-3 sm:gap-4 text-[10px] sm:text-xs text-muted-walnut dark:text-soft-ivory/50">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       {post.date}

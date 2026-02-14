@@ -56,7 +56,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[600px]">
+      <section className="relative h-[100svh] min-h-[500px] sm:min-h-[600px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentHero}
@@ -71,7 +71,7 @@ const Home = () => {
               alt="Luxury Interior"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent sm:from-black/60 sm:via-black/30" />
           </motion.div>
         </AnimatePresence>
 
@@ -84,18 +84,18 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.8 }}
-                className="max-w-2xl"
+                className="max-w-xl sm:max-w-2xl"
               >
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 tracking-tight leading-tight">
                   {heroSlides[currentHero].title}
                 </h1>
-                <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-lg">
                   {heroSlides[currentHero].subtitle}
                 </p>
                 <Link to="/collections">
-                  <Button size="lg" className="group">
+                  <Button size="lg" className="group w-full sm:w-auto text-sm sm:text-base">
                     Explore Collection
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </motion.div>
@@ -104,21 +104,22 @@ const Home = () => {
         </div>
 
         {/* Hero Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentHero(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                currentHero === index ? 'w-8 bg-white' : 'bg-white/50 hover:bg-white/75'
+              className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
+                currentHero === index ? 'w-6 sm:w-8 bg-white' : 'w-1.5 sm:w-2 bg-white/50 hover:bg-white/75'
               }`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       </section>
 
       {/* Collection Coming Soon Section */}
-      <section className="py-20 bg-warm-beige/30 dark:bg-[#111111] relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 bg-warm-beige/30 dark:bg-[#111111] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,167,94,0.05),transparent_70%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -126,17 +127,17 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-subtle-gold/10 border border-subtle-gold/30 rounded-full mb-6">
-              <Sparkles className="w-4 h-4 text-subtle-gold" />
-              <span className="text-sm font-medium text-subtle-gold tracking-wider uppercase">Coming Soon</span>
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-subtle-gold/10 border border-subtle-gold/30 rounded-full mb-4 sm:mb-6">
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-subtle-gold" />
+              <span className="text-xs sm:text-sm font-medium text-subtle-gold tracking-wider uppercase">Coming Soon</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-3 sm:mb-4">
               Collection Coming Soon
             </h2>
-            <div className="w-20 h-1 bg-subtle-gold mx-auto mb-6 rounded-full" />
-            <p className="text-muted-walnut dark:text-soft-ivory/70 max-w-2xl mx-auto">
+            <div className="w-16 sm:w-20 h-1 bg-subtle-gold mx-auto mb-4 sm:mb-6 rounded-full" />
+            <p className="text-muted-walnut dark:text-soft-ivory/70 max-w-2xl mx-auto text-sm sm:text-base px-4">
               We are curating an exceptional collection of timeless furniture pieces. 
               Subscribe to be the first to know when we launch.
             </p>
@@ -147,22 +148,24 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-md mx-auto"
+            className="max-w-md mx-auto px-4 sm:px-0"
           >
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-3 bg-white dark:bg-[#1a1a1a] border border-muted-walnut/30 dark:border-subtle-gold/20 rounded-full focus:outline-none focus:ring-2 focus:ring-subtle-gold dark:focus:ring-subtle-gold/50 text-deep-charcoal dark:text-soft-ivory placeholder-muted-walnut dark:placeholder-soft-ivory/30 transition-all duration-300"
+                className="flex-1 px-4 sm:px-6 py-3 bg-white dark:bg-[#1a1a1a] border border-muted-walnut/30 dark:border-subtle-gold/20 rounded-full focus:outline-none focus:ring-2 focus:ring-subtle-gold dark:focus:ring-subtle-gold/50 text-deep-charcoal dark:text-soft-ivory placeholder-muted-walnut dark:placeholder-soft-ivory/30 transition-all duration-300 text-sm sm:text-base"
               />
-              <Button className="hover:shadow-[0_0_20px_rgba(198,167,94,0.3)]">Subscribe</Button>
+              <Button className="hover:shadow-[0_0_20px_rgba(198,167,94,0.3)] whitespace-nowrap">
+                Subscribe
+              </Button>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-deep-charcoal dark:bg-[#0a0a0a] relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 bg-deep-charcoal dark:bg-[#0a0a0a] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(198,167,94,0.05),transparent_50%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -170,18 +173,18 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-soft-ivory mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-soft-ivory mb-3 sm:mb-4">
               What Our Clients Say
             </h2>
-            <div className="w-20 h-1 bg-subtle-gold mx-auto mb-6 rounded-full" />
-            <p className="text-soft-ivory/70 max-w-2xl mx-auto">
+            <div className="w-16 sm:w-20 h-1 bg-subtle-gold mx-auto mb-4 sm:mb-6 rounded-full" />
+            <p className="text-soft-ivory/70 max-w-2xl mx-auto text-sm sm:text-base px-4">
               Real stories from those who have transformed their spaces with NIVELLE
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -189,20 +192,20 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/5 dark:bg-[#151515] backdrop-blur-sm rounded-2xl p-8 relative border border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/20 transition-all duration-300"
+                className="bg-white/5 dark:bg-[#151515] backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 relative border border-transparent dark:border-subtle-gold/10 hover:dark:border-subtle-gold/20 transition-all duration-300"
               >
-                <Quote className="w-10 h-10 text-subtle-gold/30 mb-4" />
-                <div className="flex gap-1 mb-4">
+                <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-subtle-gold/30 mb-3 sm:mb-4" />
+                <div className="flex gap-1 mb-3 sm:mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-subtle-gold text-subtle-gold" />
+                    <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-subtle-gold text-subtle-gold" />
                   ))}
                 </div>
-                <p className="text-soft-ivory/90 mb-6 leading-relaxed">
+                <p className="text-soft-ivory/90 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                   "{testimonial.content}"
                 </p>
                 <div>
-                  <p className="font-semibold text-soft-ivory">{testimonial.name}</p>
-                  <p className="text-sm text-soft-ivory/60">{testimonial.role}</p>
+                  <p className="font-semibold text-soft-ivory text-sm sm:text-base">{testimonial.name}</p>
+                  <p className="text-xs sm:text-sm text-soft-ivory/60">{testimonial.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -211,7 +214,7 @@ const Home = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="py-20 bg-warm-beige dark:bg-[#111111] relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 bg-warm-beige dark:bg-[#111111] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,167,94,0.05),transparent_70%)]" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
@@ -220,20 +223,22 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-deep-charcoal dark:text-soft-ivory mb-3 sm:mb-4">
               Join the NIVELLE Experience
             </h2>
-            <div className="w-20 h-1 bg-subtle-gold mx-auto mb-6 rounded-full" />
-            <p className="text-muted-walnut dark:text-soft-ivory/70 mb-8 max-w-xl mx-auto">
+            <div className="w-16 sm:w-20 h-1 bg-subtle-gold mx-auto mb-4 sm:mb-6 rounded-full" />
+            <p className="text-muted-walnut dark:text-soft-ivory/70 mb-6 sm:mb-8 max-w-xl mx-auto text-sm sm:text-base px-4">
               Subscribe for exclusive offers, design inspiration, and early access to new collections.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto px-4 sm:px-0">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-3 bg-white dark:bg-[#1a1a1a] rounded-full border border-muted-walnut/30 dark:border-subtle-gold/20 focus:outline-none focus:ring-2 focus:ring-subtle-gold dark:focus:ring-subtle-gold/50 text-deep-charcoal dark:text-soft-ivory placeholder-muted-walnut dark:placeholder-soft-ivory/30 transition-all duration-300"
+                className="flex-1 px-4 sm:px-6 py-3 bg-white dark:bg-[#1a1a1a] rounded-full border border-muted-walnut/30 dark:border-subtle-gold/20 focus:outline-none focus:ring-2 focus:ring-subtle-gold dark:focus:ring-subtle-gold/50 text-deep-charcoal dark:text-soft-ivory placeholder-muted-walnut dark:placeholder-soft-ivory/30 transition-all duration-300 text-sm sm:text-base"
               />
-              <Button className="hover:shadow-[0_0_20px_rgba(198,167,94,0.3)]">Subscribe</Button>
+              <Button className="hover:shadow-[0_0_20px_rgba(198,167,94,0.3)] whitespace-nowrap">
+                Subscribe
+              </Button>
             </div>
           </motion.div>
         </div>

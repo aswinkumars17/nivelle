@@ -47,6 +47,26 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const register = async (name, email, password) => {
+    try {
+      const response = await api.post('/public/register', { name, email, password });
+      const { token, role } = response.data;
+      
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', role);
+      
+      setUser({ role });
+      setIsAuthenticated(true);
+      
+      return { success: true, role };
+    } catch (error) {
+      return { 
+        success: false, 
+        error: error.response?.data?.message || 'Registration failed' 
+      };
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
@@ -65,6 +85,7 @@ export const AuthProvider = ({ children }) => {
     isLoading,
     isAdmin,
     login,
+    register,
     logout,
   };
 
