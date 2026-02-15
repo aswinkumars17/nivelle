@@ -337,11 +337,12 @@ const Navbar = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="fixed top-0 right-0 h-full w-[280px] sm:w-[320px] bg-white dark:bg-[#0a0a0a] shadow-2xl lg:hidden z-50"
+                className="fixed top-0 right-0 h-[100dvh] w-[280px] sm:w-[320px] !bg-white dark:!bg-[#0F0F0F] shadow-2xl lg:hidden z-50 will-change-transform"
+                style={{ WebkitOverflowScrolling: 'touch' }}
               >
-                <div className="flex flex-col h-full">
+                <div className="flex flex-col h-full !bg-white dark:!bg-[#0F0F0F]">
                   {/* Header */}
-                  <div className="flex items-center justify-between p-4 border-b border-warm-beige dark:border-muted-walnut/30">
+                  <div className="flex items-center justify-between p-4 border-b border-warm-beige dark:border-muted-walnut/30 !bg-white dark:!bg-[#0F0F0F] flex-shrink-0">
                     <span className="text-lg font-bold text-deep-charcoal dark:text-soft-ivory">Menu</span>
                     <motion.button
                       onClick={() => setIsMobileMenuOpen(false)}
@@ -353,7 +354,7 @@ const Navbar = () => {
                   </div>
 
                   {/* Navigation Links */}
-                  <nav className="flex-1 overflow-y-auto py-4">
+                  <nav className="flex-1 overflow-y-auto py-4 !bg-white dark:!bg-[#0F0F0F]" style={{ WebkitOverflowScrolling: 'touch' }}>
                     {navLinks.map((link, index) => (
                       <motion.div
                         key={link.path}
@@ -380,7 +381,7 @@ const Navbar = () => {
                   </nav>
 
                   {/* Mobile Actions */}
-                  <div className="p-4 border-t border-warm-beige dark:border-muted-walnut/30 space-y-3">
+                  <div className="p-4 border-t border-warm-beige dark:border-muted-walnut/30 space-y-3 !bg-white dark:!bg-[#0F0F0F] flex-shrink-0">
                     {isAuthenticated ? (
                       <>
                         <Button 

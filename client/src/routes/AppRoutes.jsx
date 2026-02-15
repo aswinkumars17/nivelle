@@ -13,6 +13,13 @@ import Orders from '../pages/Orders';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 
+// Admin Components
+import AdminDashboard from '../pages/admin/AdminDashboard';
+import AdminCategories from '../pages/admin/AdminCategories';
+import AdminProducts from '../pages/admin/AdminProducts';
+import AddCategoryPage from '../pages/admin/AddCategoryPage';
+import AddProductPage from '../pages/admin/AddProductPage';
+
 const AppRoutes = () => {
   return (
     <AnimatePresence mode="wait">
@@ -29,6 +36,13 @@ const AppRoutes = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+
+        {/* Admin Routes - Flat structure without layout */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/categories" element={<AdminCategories />} />
+        <Route path="/admin/categories/new" element={<AddCategoryPage />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/admin/products/new" element={<AddProductPage />} />
       </Routes>
     </AnimatePresence>
   );

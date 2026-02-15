@@ -32,10 +32,11 @@ const Drawer = ({ isOpen, onClose, title, children, position = 'right' }) => {
             animate={{ x: 0 }}
             exit={slideVariants[position]}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className={`fixed top-0 ${positionClasses[position]} h-full w-full max-w-md bg-white dark:bg-deep-charcoal shadow-soft-lg z-50`}
+            className={`fixed top-0 ${positionClasses[position]} h-[100dvh] w-full max-w-md !bg-white dark:!bg-[#0F0F0F] shadow-soft-lg z-50 will-change-transform flex flex-col`}
+            style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-warm-beige dark:border-muted-walnut">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-warm-beige dark:border-muted-walnut !bg-white dark:!bg-[#0F0F0F] flex-shrink-0">
               <h2 className="text-xl font-semibold text-deep-charcoal dark:text-soft-ivory">
                 {title}
               </h2>
@@ -50,7 +51,7 @@ const Drawer = ({ isOpen, onClose, title, children, position = 'right' }) => {
             </div>
             
             {/* Content */}
-            <div className="h-[calc(100%-80px)] overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-6 !bg-white dark:!bg-[#0F0F0F]" style={{ WebkitOverflowScrolling: 'touch' }}>
               {children}
             </div>
           </motion.div>

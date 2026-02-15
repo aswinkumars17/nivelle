@@ -31,10 +31,10 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className={`fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full ${sizes[size]} z-50 px-4`}
           >
-            <div className="bg-white/90 dark:bg-deep-charcoal/90 backdrop-blur-md rounded-2xl shadow-soft-lg overflow-hidden">
+            <div className="bg-white/90 dark:bg-deep-charcoal/90 backdrop-blur-md rounded-2xl shadow-soft-lg overflow-hidden max-h-[85vh] flex flex-col">
               {/* Header */}
               {title && (
-                <div className="flex items-center justify-between px-6 py-4 border-b border-warm-beige dark:border-muted-walnut">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-warm-beige dark:border-muted-walnut flex-shrink-0">
                   <h2 className="text-xl font-semibold text-deep-charcoal dark:text-soft-ivory">
                     {title}
                   </h2>
@@ -50,7 +50,7 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
               )}
               
               {/* Content */}
-              <div className="p-6">
+              <div className="p-6 overflow-y-auto">
                 {children}
               </div>
             </div>
