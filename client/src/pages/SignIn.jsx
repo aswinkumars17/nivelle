@@ -33,7 +33,12 @@ const SignIn = () => {
     const result = await login(formData.email, formData.password);
     
     if (result.success) {
-      navigate('/');
+      // Redirect based on user role
+      if (result.role === 'admin' || result.role === 'ADMIN') {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
     } else {
       setError(result.error || 'Invalid email or password');
     }

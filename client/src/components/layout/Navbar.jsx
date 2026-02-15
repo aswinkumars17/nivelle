@@ -38,7 +38,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { addToast } = useToast();
-  const { isAuthenticated, isAdmin, logout } = useAuth();
+  const { isAuthenticated, isAdmin, logout, isLoading } = useAuth();
    
   const cartItems = useSelector((state) => state.cart.items);
   const wishlistItems = useSelector((state) => state.wishlist.items);
@@ -204,83 +204,87 @@ const Navbar = () => {
               </motion.button>
 
               {/* Profile/Auth - Hidden on mobile */}
-              {isAuthenticated ? (
-                <div className="hidden md:relative">
-                  <motion.button
-                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-deep-charcoal dark:bg-soft-ivory text-white dark:text-deep-charcoal rounded-full text-xs sm:text-sm font-medium hover:bg-muted-walnut dark:hover:bg-warm-beige transition-colors"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                    <span>Account</span>
-                  </motion.button>
+              {isLoading ? (
+                // Show loading spinner instead of empty space
+                <div className="hidden md:flex items-center justify-center w-24">
+                  <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-subtle-gold"></div>
+                </div>
+              ) : isAuthenticated ? (
+                <div className="hidden md:flex items-center gap-2">
+                  {/* Admin Panel Button - Visible only for admins */}
+                  {isAdmin() && (
+                    <motion.button
+                      onClick={() => navigate('/admin')}
+                      className="flex items-center gap-1.5 px-3 sm:px-4 py-2 bg-subtle-gold text-deep-charcoal rounded-full text-xs sm:text-sm font-medium hover:bg-accent-gold-hover transition-colors"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span>Admin Panel</span>
+                    </motion.button>
+                  )}
                   
-                  {/* User Dropdown Menu */}
-                  <AnimatePresence>
-                    {isUserMenuOpen && (
-                      <>
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="fixed inset-0 z-40"
-                          onClick={() => setIsUserMenuOpen(false)}
-                        />
-                        <motion.div
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-[#1a1a1a] rounded-xl shadow-xl border border-warm-beige dark:border-muted-walnut/30 z-50 overflow-hidden"
-                        >
-                          <div className="py-2">
-                            <button
-                              onClick={() => {
-                                setIsUserMenuOpen(false);
-                                navigate('/orders');
-                              }}
-                              className="w-full px-4 py-2 text-left text-sm text-deep-charcoal dark:text-soft-ivory hover:bg-warm-beige/50 dark:hover:bg-muted-walnut/30 transition-colors"
-                            >
-                              My Orders
-                            </button>
-                            {isAdmin() && (
+                  {/* Account Dropdown */}
+                  <div className="relative">
+                    <motion.button
+                      onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                      className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-deep-charcoal dark:bg-soft-ivory text-white dark:text-deep-charcoal rounded-full text-xs sm:text-sm font-medium hover:bg-muted-walnut dark:hover:bg-warm-beige transition-colors"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span>Account</span>
+                    </motion.button>
+                    
+                    {/* User Dropdown Menu */}
+                    <AnimatePresence>
+                      {isUserMenuOpen && (
+                        <>
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-40"
+                            onClick={() => setIsUserMenuOpen(false)}
+                          />
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-[#1a1a1a] rounded-xl shadow-xl border border-warm-beige dark:border-muted-walnut/30 z-50 overflow-hidden"
+                          >
+                            <div className="py-2">
                               <button
                                 onClick={() => {
                                   setIsUserMenuOpen(false);
-                                  navigate('/admin');
+                                  navigate('/settings');
                                 }}
-                                className="w-full px-4 py-2 text-left text-sm text-deep-charcoal dark:text-soft-ivory hover:bg-warm-beige/50 dark:hover:bg-muted-walnut/30 transition-colors"
+                                className="w-full px-4 py-2 text-left text-sm text-deep-charcoal dark:text-soft-ivory hover:bg-warm-beige/50 dark:hover:bg-muted-walnut/30 transition-colors flex items-center gap-2"
                               >
-                                Admin Dashboard
+                                <Settings className="w-4 h-4" />
+                                Settings
                               </button>
-                            )}
-                            <button
-                              onClick={() => {
-                                setIsUserMenuOpen(false);
-                                navigate('/settings');
-                              }}
-                              className="w-full px-4 py-2 text-left text-sm text-deep-charcoal dark:text-soft-ivory hover:bg-warm-beige/50 dark:hover:bg-muted-walnut/30 transition-colors flex items-center gap-2"
-                            >
-                              <Settings className="w-4 h-4" />
-                              Settings
-                            </button>
-                            <hr className="my-2 border-warm-beige dark:border-muted-walnut/30" />
-                            <button
-                              onClick={() => {
-                                setIsUserMenuOpen(false);
-                                logout();
-                                addToast('Logged out successfully', 'success');
-                              }}
-                              className="w-full px-4 py-2 text-left text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex items-center gap-2"
-                            >
-                              <LogOut className="w-4 h-4" />
-                              Logout
-                            </button>
-                          </div>
-                        </motion.div>
-                      </>
-                    )}
-                  </AnimatePresence>
+                            </div>
+                          </motion.div>
+                        </>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  
+                  {/* Visible Logout Button */}
+                  <motion.button
+                    onClick={() => {
+                      logout();
+                      addToast('Logged out successfully', 'success');
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full text-xs sm:text-sm font-medium transition-colors"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    title="Logout"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span className="hidden lg:inline">Logout</span>
+                  </motion.button>
                 </div>
               ) : (
                 <div className="hidden md:flex items-center gap-2">
@@ -384,41 +388,56 @@ const Navbar = () => {
                   <div className="p-4 border-t border-warm-beige dark:border-muted-walnut/30 space-y-3 !bg-white dark:!bg-[#0F0F0F] flex-shrink-0">
                     {isAuthenticated ? (
                       <>
-                        <Button 
-                          variant="primary" 
-                          className="w-full justify-center"
-                          onClick={() => {
-                            setIsMobileMenuOpen(false);
-                            navigate('/orders');
-                          }}
-                        >
-                          <User className="w-4 h-4 mr-2" />
-                          My Orders
-                        </Button>
+                        {/* User Info Display */}
+                        <div className="px-4 py-2 text-sm text-muted-walnut dark:text-soft-ivory/70 border-b border-warm-beige dark:border-muted-walnut/30 pb-3 mb-3">
+                          <span className="font-medium text-deep-charcoal dark:text-soft-ivory">Logged in as:</span>
+                          <br />
+                          {isAdmin() ? 'Administrator' : 'User'}
+                        </div>
+                        
+                        {/* Admin Panel Button - Visible only for admins */}
                         {isAdmin() && (
                           <Button 
-                            variant="outline" 
-                            className="w-full justify-center"
+                            variant="primary" 
+                            className="w-full justify-center bg-subtle-gold text-deep-charcoal hover:bg-accent-gold-hover"
                             onClick={() => {
                               setIsMobileMenuOpen(false);
                               navigate('/admin');
                             }}
                           >
-                            Admin Dashboard
+                            <Settings className="w-4 h-4 mr-2" />
+                            Admin Panel
                           </Button>
                         )}
+                        
+                        {/* Settings Button */}
                         <Button 
-                          variant="ghost" 
-                          className="w-full justify-center text-red-600 dark:text-red-400"
+                          variant="outline" 
+                          className="w-full justify-center"
                           onClick={() => {
                             setIsMobileMenuOpen(false);
-                            logout();
-                            addToast('Logged out successfully', 'success');
+                            navigate('/settings');
                           }}
                         >
-                          <LogOut className="w-4 h-4 mr-2" />
-                          Logout
+                          <Settings className="w-4 h-4 mr-2" />
+                          Settings
                         </Button>
+                        
+                        {/* Prominent Logout Button */}
+                        <div className="pt-2 border-t border-warm-beige dark:border-muted-walnut/30 mt-2">
+                          <Button 
+                            variant="ghost" 
+                            className="w-full justify-center bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 border border-red-200 dark:border-red-800"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              logout();
+                              addToast('Logged out successfully', 'success');
+                            }}
+                          >
+                            <LogOut className="w-4 h-4 mr-2" />
+                            Logout
+                          </Button>
+                        </div>
                       </>
                     ) : (
                       <Button 

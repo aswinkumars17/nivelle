@@ -20,6 +20,9 @@ import AdminProducts from '../pages/admin/AdminProducts';
 import AddCategoryPage from '../pages/admin/AddCategoryPage';
 import AddProductPage from '../pages/admin/AddProductPage';
 
+// Route Protection
+import AdminRoute from '../components/AdminRoute';
+
 const AppRoutes = () => {
   return (
     <AnimatePresence mode="wait">
@@ -37,12 +40,14 @@ const AppRoutes = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
 
-        {/* Admin Routes - Flat structure without layout */}
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/categories" element={<AdminCategories />} />
-        <Route path="/admin/categories/new" element={<AddCategoryPage />} />
-        <Route path="/admin/products" element={<AdminProducts />} />
-        <Route path="/admin/products/new" element={<AddProductPage />} />
+        {/* Admin Routes - Protected by AdminRoute */}
+        <Route element={<AdminRoute />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/categories" element={<AdminCategories />} />
+          <Route path="/admin/categories/new" element={<AddCategoryPage />} />
+          <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/products/new" element={<AddProductPage />} />
+        </Route>
       </Routes>
     </AnimatePresence>
   );
